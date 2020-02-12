@@ -2,7 +2,7 @@
 This repo contains all the workings of the flask app for Sheltermatch, a tool to predict the adoptability of dogs at specific animal shelters, and at selected relocation cities. 
 
 ### The app works by loading:   
--a model trained on a SQL database of adopted dogs scraped from the Petfinder API 
+-a model trained on a SQL database of adopted dogs scraped from the Petfinder API   
 -a csv list of recommended shelters (pulled from the top shelters in the SQL database)
 
 ### When given a petfinder shelterid as input, the app:  
