@@ -6,9 +6,15 @@ http://processingdata.co/input
 
 ## requirements
 
-the app requires Python 3 (for trivial reasons: e.g. f statments), functions will fail returning server errors 
+the app requires Python 3 (for trivial reasons: e.g. f statments), if Python 2 is used functions will fail returning server errors 
 
-required packages are: 
+required packages are:  
+flask   
+numpy  
+pandas   
+requests  
+sklearn   
+gunicorn  
 
 `pip install flask numpy pandas requests sklearn gunicorn`
 
