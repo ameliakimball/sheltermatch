@@ -1,6 +1,18 @@
 # sheltermatch
 This repo contains all the workings of the flask app for Sheltermatch, a tool to predict the adoptability of dogs at specific animal shelters, and at selected relocation cities. 
 
+
+The app works by loading 
+-a model trained on a SQL database of adopted dogs scraped from the Petfinder API
+-a csv list of recommended shelters (pulled from the top shelters in the SQL database)
+
+When given a petfinder shelterid as input, the app:  
+pings the petfinder API,  
+returns the full list of dogs at that shelter,  
+calculates the log odds of adoption within a month for each dog at the shelter,  
+calculates the log odds for each dog if it were to move to Minneapolis, Denver, or Chicago,  
+and then returns the ten dogs who are least likely to be adopted within a month, along with the percent likelihood of their adoption within one month in their current shelter, in  Minneapolis, in Denver, and in Chicago, as well as a list of shelters in Minneapolis, Denver, and Chicago. 
+
 This folder is the live version, which also lives on an AWS EC2 instance and is available at 
 http://processingdata.co/input
 
@@ -18,7 +30,15 @@ gunicorn
 
 `pip install flask numpy pandas requests sklearn gunicorn`
 
+To instantiate the app it must inheret two things from a separate repo:   
+-a .csv list of shelters to display  
+-a .sav file pickled model to run on the data retrieved from the API    
+
+These files are listed in their appropriate folder in the folder structure section below. 
+
+
 ## folder structure 
+
 
 ### application/ contains:
 
