@@ -7,11 +7,12 @@ This repo contains all the workings of the flask app for Sheltermatch, a tool to
 - a csv list of recommended shelters (pulled from the top shelters in the SQL database)
 
 ### When given a petfinder shelterid as input, the app:  
-pings the petfinder API,  
-returns the full list of dogs at that shelter,  
-calculates the log odds of adoption within a month for each dog at the shelter,  
-calculates the log odds for each dog if it were to move to Minneapolis, Denver, or Chicago,  
-and then returns the ten dogs who are least likely to be adopted within a month, along with the percent likelihood of their adoption within one month in their current shelter, in  Minneapolis, in Denver, and in Chicago, as well as a list of shelters in Minneapolis, Denver, and Chicago. 
+- pings the petfinder API,  
+- returns the full list of dogs at that shelter,  
+- calculates the probability of adoption within a month for each dog at the shelter,  
+- calculates the probability of adoption for each dog if it were to move to Minneapolis, Denver, or Chicago,  
+- returns the ten dogs who are least likely to be adopted within a month, along with the percent likelihood of their adoption within one month in their current shelter, in  Minneapolis, in Denver, and in Chicago
+- returns a list of shelters in Minneapolis, Denver, and Chicago. 
 
 This folder is the live version, which also lives on an AWS EC2 instance and is available at 
 http://processingdata.co/input
