@@ -30,9 +30,11 @@ gunicorn
 
 `pip install flask numpy pandas requests sklearn gunicorn`
 
+Additionally, your petfinder API Key and secret must be defined as environment variables. 
+
 To instantiate the app it must inheret two things from a separate repo:   
--a .csv list of shelters to display  
--a .sav file pickled model to run on the data retrieved from the API    
+- a .csv list of shelters to display  
+- a .sav file pickled model to run on the data retrieved from the API    
 
 These files are listed in their appropriate folder in the folder structure section below. 
 
@@ -48,6 +50,6 @@ These files are listed in their appropriate folder in the folder structure secti
 - shelters.csv : a list of the shelters servied from the sql database (to be served to the user with their api query). 
 
 ### application/flaskexample contains: 
-- views.py: the "guts" of the app, this is top level code that calls the functions in pet_functions.py and instantiates what to do from input to output screens on the app.   
+- views.py: the "guts" of the app, this is top level code that calls the functions in pet_functions.py and specifies what happens from input to output screens on the app.   
 - templates/ : the html templates used for the input and output   
 - static/: a folder with css/, fonts/ and js/ for the website. *Note that /etc/nginx/sites-enabled points to the static folder*, and therefore any change to this folder structure risks losing website formatting, or breaking the website entirely.   
