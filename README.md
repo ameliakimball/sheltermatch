@@ -18,9 +18,9 @@ http://processingdata.co/input
 
 ## requirements
 
-the app requires Python 3 (for trivial reasons: e.g. f statments), if Python 2 is used functions will fail returning server errors 
+1) python version the app requires Python 3 (for trivial reasons: e.g. f statments), if Python 2 is used functions will fail returning server errors 
 
-required packages are:  
+2) python modules
 flask   
 numpy  
 pandas   
@@ -30,9 +30,9 @@ gunicorn
 
 `pip install flask numpy pandas requests sklearn gunicorn`
 
-Additionally, your petfinder API Key and secret must be defined as environment variables. 
+3) API Key and secret. As written, your petfinder API Key and secret must be defined as environment variables. They are called in views.py
 
-To instantiate the app it must inheret two things from a separate repo:   
+4) To instantiate the app it must inheret two things from a separate repo:   
 - a .csv list of shelters to display  
 - a .sav file pickled model to run on the data retrieved from the API    
 
