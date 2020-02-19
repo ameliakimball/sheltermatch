@@ -28,6 +28,10 @@ def index():
 def cesareans_input():
     return render_template("input.html")
 
+
+#all operations are performed here on the string given at input. 
+#note that features of interest are hard coded here! they are specified 
+#in clean_dirty_resp()
 @app.route('/output')
 def cesareans_output():
   shelter_id = request.args.get('shelter_id')
