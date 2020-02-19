@@ -2,8 +2,9 @@
 This repo contains all the workings of the flask app for Sheltermatch, a tool to predict the adoptability of dogs at specific animal shelters, and at selected relocation cities. 
 
 ### The app works by loading:   
--a model trained on a SQL database of adopted dogs scraped from the Petfinder API   
--a csv list of recommended shelters (pulled from the top shelters in the SQL database)
+- a model trained on a SQL database of adopted dogs scraped from the Petfinder API   
+
+- a csv list of recommended shelters (pulled from the top shelters in the SQL database)
 
 ### When given a petfinder shelterid as input, the app:  
 pings the petfinder API,  
@@ -17,9 +18,9 @@ http://processingdata.co/input
 
 ## requirements
 
-the app requires Python 3 (for trivial reasons: e.g. f statments), if Python 2 is used functions will fail returning server errors 
+1) python version the app requires Python 3 (for trivial reasons: e.g. f statments), if Python 2 is used functions will fail returning server errors 
 
-required packages are:  
+2) python modules
 flask   
 numpy  
 pandas   
@@ -29,9 +30,11 @@ gunicorn
 
 `pip install flask numpy pandas requests sklearn gunicorn`
 
-To instantiate the app it must inheret two things from a separate repo:   
--a .csv list of shelters to display  
--a .sav file pickled model to run on the data retrieved from the API    
+3) API Key and secret. As written, your petfinder API Key and secret must be defined as environment variables. They are called in views.py
+
+4) To instantiate the app it must inheret two things from a separate repo:   
+- a .csv list of shelters to display  
+- a .sav file pickled model to run on the data retrieved from the API    
 
 These files are listed in their appropriate folder in the folder structure section below. 
 
@@ -41,12 +44,12 @@ These files are listed in their appropriate folder in the folder structure secti
 
 ### application/ contains:
 
--draft_logit_reg.sav : the .sav pickled model file.  
--run.py: a script that instantiates a local server for debugging.   
--pet_functions.py : a python script of functions called by the app. 
--shelters.csv : a list of the shelters servied from the sql database (to be served to the user with their api query). 
+- draft_logit_reg.sav : the .sav pickled model file.  
+- run.py: a script that instantiates a local server for debugging.   
+- pet_functions.py : a python script of functions called by the app. 
+- shelters.csv : a list of the shelters servied from the sql database (to be served to the user with their api query). 
 
 ### application/flaskexample contains: 
--views.py: the "guts" of the app, this is top level code that calls the functions in pet_functions.py and instantiates what to do from input to output screens on the ap.   
--templates/ : the html templates used for the input and output   
--static/: a folder with css/, fonts/ and js/ for the website. *Note that /etc/nginx/sites-enabled points to the static folder*, and therefore any change to this folder structure risks losing website formatting, or breaking the website entirely.   
+- views.py: the "guts" of the app, this is top level code that calls the functions in pet_functions.py and specifies what happens from input to output screens on the app.   
+- templates/ : the html templates used for the input and output   
+- static/: a folder with css/, fonts/ and js/ for the website. *Note that /etc/nginx/sites-enabled points to the static folder*, and therefore any change to this folder structure risks losing website formatting, or breaking the website entirely.   
