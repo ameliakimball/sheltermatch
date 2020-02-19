@@ -6,8 +6,13 @@ import sklearn
 import pickle
 import numpy as np
 
+#API Key and secret must be saved as environment variables 
+
 KEY = os.environ['PETFINDER_KEY2']
 SECRET = os.environ['PETFINDER_SECRET2']
+
+
+#API requres first getting a bearer token before pinging
 
 def get_bearer_token(KEY,SECRET):
 	data = {
@@ -28,6 +33,7 @@ def get_bearer_token(KEY,SECRET):
 	return new_header
 
 
+# use header returned in bearer token function to ping the api for current dogs. 
 def get_text_resp(organization, header):
 	org = organization
 	type = 'dog'
@@ -44,24 +50,22 @@ def get_text_resp(organization, header):
 	return respdf
 
 
-
+#this function drops unnecessary variables.  See backend version for imputation. 
 def clean_dirty_resp(df, vars_of_interest):
 	my_df = df 
 	my_df = my_df[vars_of_interest]
-	#city should be here!
-	#other cleaning?
-	#uf the columns expected by the model don't exist, create them and fill them with zeros
+	#city imputation is here in original version 
 	return my_df
 
 
 #applies one hot coding to all discrete variables
-#fills in empty columns for all columns expected by the model and not already present in df. 
+#NB columns are hardcoded here! 
+
 def one_hot_fill(df, cols_in_mod, cols_to_transform):
 	my_df = df 
 	X = my_df[['age','size','coat','attributes.special_needs']]
 	X = pd.get_dummies(df, columns = cols_to_transform)
 	Xcollist = list(X.columns)
-
 	cols_in_mod = cols_in_mod
 
 	for col in cols_in_mod:
@@ -70,6 +74,9 @@ def one_hot_fill(df, cols_in_mod, cols_to_transform):
 	return X
 
 
+
+#This function gets predictions in the current city, then populates the input df with 
+#values of the three target city and returns those as well. 
 
 def get_petmod_predict(coded_df): #clean_df
 	X = coded_df.drop(['name','id'],1)
