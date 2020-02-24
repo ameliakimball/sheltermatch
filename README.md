@@ -14,7 +14,7 @@ This repo contains all the workings of the flask app for Sheltermatch, a tool to
 - returns the ten dogs who are least likely to be adopted within a month, along with the percent likelihood of their adoption within one month in their current shelter, in  Minneapolis, in Denver, and in Chicago
 - returns a list of shelters in Minneapolis, Denver, and Chicago. 
 
-This folder is the live version, which also lives on an AWS EC2 instance and is available at 
+The live version lives on an AWS EC2 instance and is available at 
 http://processingdata.co/input
 
 ## requirements
